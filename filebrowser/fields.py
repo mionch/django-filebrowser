@@ -72,6 +72,8 @@ class FileBrowseFormField(forms.CharField):
 
     def clean(self, value):
         value = super(FileBrowseFormField, self).clean(value)
+        if value is None:
+             value = ''
         if value == '':
             return value
         file_extension = os.path.splitext(value)[1].lower()
